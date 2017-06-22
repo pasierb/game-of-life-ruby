@@ -12,9 +12,9 @@ class GameOfLifeTest < MiniTest::Unit::TestCase
   end
 
   def test_simple_single_cell
-    stage = [[nil, 1, nil]]
+    stage = [[false, true, false]]
 
-    assert_equal [[nil, nil, nil]], @runner.simulate(stage)
+    assert_equal [[false, false, false]], @runner.simulate(stage)
   end
 
   def test_neighbours

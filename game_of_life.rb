@@ -8,8 +8,8 @@ module GameOfLife
     end
   end
 
-  def is_flourishing(state, neighbours_count)
-    (!state && neighbours_count == 3) || (!!state && (2..3) === neighbours_count)
+  def is_flourishing(state, neighbours)
+    (!state && neighbours == 3) || (!!state && (2..3) === neighbours)
   end
 
   def neighbours(stage, row, column)
@@ -25,9 +25,9 @@ module GameOfLife
     ].reject(&:!).size
   end
 
-  def string_stage_parse(world)
+  def string_stage_parse(world, empty_char = ".")
     world.each_line.map do |line|
-      line.chomp.each_char.map {|char| char != '.' }
+      line.chomp.each_char.map {|char| char != empty_char }
     end
   end
 
