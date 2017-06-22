@@ -14,12 +14,12 @@ module GameOfLife
 
   def neighbours(stage, row, column)
     [
-      (stage[row - 1] && stage[row - 1][column - 1]),
-      (stage[row - 1] && stage[row - 1][column]),
-      (stage[row - 1] && stage[row - 1][column + 1]),
-      (stage[row][column - 1]),
+      (row > 0 && column > 0 && stage[row - 1] && stage[row - 1][column - 1]),
+      (row > 0 && stage[row - 1] && stage[row - 1][column]),
+      (row > 0 && stage[row - 1] && stage[row - 1][column + 1]),
+      (column > 0 && stage[row][column - 1]),
       (stage[row][column + 1]),
-      (stage[row + 1] && stage[row + 1][column - 1]),
+      (column > 0 && stage[row + 1] && stage[row + 1][column - 1]),
       (stage[row + 1] && stage[row + 1][column]),
       (stage[row + 1] && stage[row + 1][column + 1])
     ].reject(&:!).size
