@@ -1,19 +1,21 @@
 require_relative '../game_of_life';
 
-raise ArgumentError.new("provide fixture file") unless ARGV[0]
 
+fixture_path = ARGV[0]
 mutations = (ARGV[1] || 1000).to_i
 interval = (ARGV[2] || 0.2).to_f
+
+raise ArgumentError.new("provide fixture file") unless fixture_path
 
 Runner = Class.new { include GameOfLife }
 game = Runner.new
 
-temp = game.string_stage_parse(File.read(ARGV[0]))
+temp = game.string_stage_parse(File.read(fixture_path))
 mutations.times do |i|
 
   puts `clear`
   puts <<-EOS
-fixture:    #{ARGV[0]}
+fixture:    #{fixture_path}
 generation: #{i}/#{mutations}
   EOS
 
