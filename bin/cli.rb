@@ -1,37 +1,33 @@
 require_relative '../game_of_life';
 
-mutations = 1000
-world = <<-EOS
-..............
-..............
-...O..........
-...O..........
-...O..........
-..............
-EOS
+raise ArgumentError.new("provide fixture file") unless ARGV[0]
 
-if ARGV[0]
-  world = File.read(ARGV[0])
-end
+mutations = (ARGV[1] || 1000).to_i
+interval = (ARGV[2] || 0.2).to_f
 
 Runner = Class.new { include GameOfLife }
 game = Runner.new
-temp = game.string_stage_parse(world)
 
+temp = game.string_stage_parse(File.read(ARGV[0]))
 mutations.times do |i|
+
   puts `clear`
-  puts "generation: #{i}/#{mutations}\n\n"
+  puts <<-EOS
+fixture:    #{ARGV[0]}
+generation: #{i}/#{mutations}
+  EOS
 
   temp.each do |row|
     arr = row.map do |cell|
       !!cell ? "\u2588" : "_"
-    end
+    end.to_a
 
     puts arr.join("|")
   end
 
-  sleep 0.5
+  sleep interval
 
   temp = game.simulate(temp)
+
 end
 
