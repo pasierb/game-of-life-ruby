@@ -14,8 +14,6 @@ if ARGV[0]
   world = File.read(ARGV[0])
 end
 
-puts world
-
 Runner = Class.new { include GameOfLife }
 game = Runner.new
 temp = game.string_stage_parse(world)
@@ -26,7 +24,7 @@ mutations.times do |i|
 
   temp.each do |row|
     arr = row.map do |cell|
-      !!cell ? "X" : "_"
+      !!cell ? "\u2588" : "_"
     end
 
     puts arr.join("|")
