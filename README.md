@@ -20,6 +20,9 @@ ruby bin/cli.rb fixtures/glider.txt
 ```
 Other setups can be found in fixtures folder
 
+![alt text](/game-of-life.png)
+
+
 Note
 ----
 
