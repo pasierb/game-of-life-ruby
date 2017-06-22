@@ -9,7 +9,7 @@ module GameOfLife
   end
 
   def is_flourishing(state, neighbours_count)
-    (!state && neighbours_count == 3) || (!!state && (2..3) === neighbours_count) || nil
+    (!state && neighbours_count == 3) || (!!state && (2..3) === neighbours_count)
   end
 
   def neighbours(stage, row, column)
