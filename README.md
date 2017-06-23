@@ -16,11 +16,19 @@ Usage
 -----
 
 ```
-ruby bin/cli.rb fixtures/glider.txt
+bin/cli fixtures/glider.txt
 ```
+
 Other setups can be found in fixtures folder
 
 ![alt text](/game-of-life.png)
+
+Test
+----
+
+```
+ruby -Ilib:test test/game_of_life_test.rb
+```
 
 
 Note
