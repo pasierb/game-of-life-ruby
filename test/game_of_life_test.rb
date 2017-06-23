@@ -17,6 +17,18 @@ class GameOfLifeTest < MiniTest::Unit::TestCase
     assert_equal [[false, false, false]], @runner.simulate(stage)
   end
 
+  def test_all_8_neighbours
+    world = <<-EOS
+.....
+XXX..
+X....
+    EOS
+
+    stage = @runner.string_stage_parse(world)
+
+    assert_equal 3, @runner.neighbours(stage, 1, 1)
+  end
+
   def test_neighbours
     world = [
       [nil, 1, nil],
